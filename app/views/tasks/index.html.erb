@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <h1>My tasks</h1>
+        <ul class="list-unstyled">
+          <% @tasks.each do |task| %>
+            <% if task.completed %>
+              <li><i class="fa fa-check-square-o icon" aria-hidden="true"></i><%= link_to task.title, task_path(task) %><%= link_to '<i class="fa fa-trash-o icon" aria-hidden="true"></i>'.html_safe, task_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %></li>
+            <% else %>
+              <li><i class="fa fa-square-o icon" aria-hidden="true"></i><%= link_to task.title, task_path(task) %><%= link_to '<i class="fa fa-trash-o icon" aria-hidden="true"></i>'.html_safe, task_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %></li>
+            <% end %>
+          <% end %>
+        </ul>
+        <%= link_to "Add new task", new_task_path %>
+    </div>
+  </div>
+</div>
+
+
